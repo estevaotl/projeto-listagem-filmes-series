@@ -1,18 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMWIxMDhlZDNiNDI0YzljMWM0MmIxN2NkYzY0MWVkYiIsIm5iZiI6MTc0NjY1NTYzOS43NzYsInN1YiI6IjY4MWJkOTk3NzBmMjE4NTZjNGIxYzU5OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RM6CZ8-rpPdWYiHwZ9RBNSILvQTsJ4kKfDlINEs7cFA";
-
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer ' + API_KEY
-        }
-    };
-
     const loading = document.getElementById('loading-overlay');
     const container = document.getElementById('listagem-filmes-series');
 
-    fetch('https://api.themoviedb.org/3/trending/all/day?language=pt-br', options)
+    fetch(`/.netlify/functions/tmdb-get-data?path=${encodeURIComponent('trending/all/day')}`)
         .then(res => res.json())
         .then(data => {
             data.results.forEach(item => {

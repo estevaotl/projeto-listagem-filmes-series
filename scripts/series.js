@@ -1,21 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMWIxMDhlZDNiNDI0YzljMWM0MmIxN2NkYzY0MWVkYiIsIm5iZiI6MTc0NjY1NTYzOS43NzYsInN1YiI6IjY4MWJkOTk3NzBmMjE4NTZjNGIxYzU5OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RM6CZ8-rpPdWYiHwZ9RBNSILvQTsJ4kKfDlINEs7cFA";
-
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer ' + API_KEY
-        }
-    };
-
     const loading = document.getElementById('loading-overlay');
     const container = document.getElementById('listagem-series-populares');
     const container2 = document.getElementById('listagem-series-no-cinema');
     const container3 = document.getElementById('listagem-series-top-rated');
     const container4 = document.getElementById('listagem-series-lancamento-proximo');
 
-    fetch('https://api.themoviedb.org/3/tv/popular?language=pt-br', options)
+    fetch(`/.netlify/functions/tmdb-get-data?path=${encodeURIComponent('tv/popular')}`)
         .then(res => res.json())
         .then(data => {
             data.results.forEach(item => {
@@ -46,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     // Get a list of TV shows airing today.
-    fetch('https://api.themoviedb.org/3/tv/airing_today?language=pt-br', options)
+    fetch(`/.netlify/functions/tmdb-get-data?path=${encodeURIComponent('tv/airing_today')}`)
         .then(res => res.json())
         .then(data => {
             data.results.forEach(item => {
@@ -76,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             container2.style.display = 'flex';
         });
 
-    fetch('https://api.themoviedb.org/3/tv/top_rated?language=pt-br', options)
+    fetch(`/.netlify/functions/tmdb-get-data?path=${encodeURIComponent('tv/top_rated')}`)
         .then(res => res.json())
         .then(data => {
             data.results.forEach(item => {
@@ -107,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     // Get a list of TV shows that air in the next 7 days.
-    fetch('https://api.themoviedb.org/3/tv/on_the_air?language=pt-br', options)
+    fetch(`/.netlify/functions/tmdb-get-data?path=${encodeURIComponent('tv/on_the_air')}`)
         .then(res => res.json())
         .then(data => {
             data.results.forEach(item => {
