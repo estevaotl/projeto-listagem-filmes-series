@@ -1,5 +1,5 @@
 # Descrição do Projeto
-- Esse projeto foi feito visando o aprofundamento no estudo do front-end e consumo de API's, na qual utilizei a [TMDB](https://www.themoviedb.org/).
+- Esse projeto foi feito visando o aprofundamento no estudo do front-end e consumo de API's, na qual utilizei a [TMDB](https://www.themoviedb.org/), para exibição de filmes e séries, que estão em alta, no cinema etc.
 
 ## Tecnologias Utilizadas
 - HTML
